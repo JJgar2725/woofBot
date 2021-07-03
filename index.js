@@ -1,6 +1,5 @@
 const fs = require('fs');
 const discord = require("discord.js");
-const config = require('./config.json');
 const dotenv = require('dotenv');
 
 const client = new discord.Client(); // new client
@@ -21,9 +20,9 @@ client.once('ready', () => {
 
 // on message event
 client.on('message', (message) => {
-    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+    if (!message.content.startsWith(process.env.prefix) || message.author.bot) return;
 
-    const args = message.content.slice(config.prefix.length).trim().split(' ');
+    const args = message.content.slice(process.env.prefix.length).trim().split(' ');
     const command = args.shift().toLowerCase();
 
     if (!client.commands.has(command)) return;
