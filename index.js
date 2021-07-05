@@ -39,6 +39,16 @@ client.on("message", (message) => {
 
   const command = client.commands.get(commandName);
 
+  if (command.args && !args.length) {
+    let reply = "You didn't provide the necessary arguments for this command!";
+
+    if (command.usage) {
+      reply += `\nThe proper usage for ${commandName} is: ${process.env.prefix}${command.name} ${command.usage}`;
+    }
+
+    return message.channel.send(reply);
+  }
+
   try {
     command.execute(message, args, discord);
   } catch (error) {

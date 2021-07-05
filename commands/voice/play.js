@@ -3,6 +3,8 @@ const yts = require("yt-search");
 
 module.exports = {
   name: "play",
+  usage: "<youtube-search-term>",
+  args: true,
   description: "Command to make the bot play music.",
   async execute(message, args, discord) {
     const voiceChannel = message.member.voice.channel;
