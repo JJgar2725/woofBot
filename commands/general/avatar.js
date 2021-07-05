@@ -1,5 +1,6 @@
 module.exports = {
   name: "avatar",
+  aliases: ["pfp", "icon"],
   description: "Sends a message with the avatar of a given user.",
   async execute(message, args, discord) {
     const user = message.author;

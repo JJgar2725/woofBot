@@ -1,5 +1,6 @@
 module.exports = {
   name: "github",
+  aliases: ["gh"],
   description: "Sends the user a GitHub link to the project.",
   execute(message) {
     const github = "https://github.com/JJgar2725/woofBot";
