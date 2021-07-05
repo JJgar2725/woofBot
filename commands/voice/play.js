@@ -18,7 +18,7 @@ module.exports = {
             
             voiceChannel.join().then(connection => {
                 const stream = ytdl(url, { filter: 'audioonly' });
-                const dispatcher = connection.play(stream);
+                message.client.dispatcher = connection.play(stream);
                 
                 const songEmbed = new discord.MessageEmbed()
                 .setColor('#ffffff')

@@ -7,6 +7,8 @@ dotenv.config(); // load in env
 client.commands = new discord.Collection(); // collection class extended from maps
 const commandFolders = fs.readdirSync('./commands');
 
+client.dispatcher = {};
+
 for (const folder of commandFolders) {
     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
     for (const file of commandFiles) {
