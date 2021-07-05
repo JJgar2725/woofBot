@@ -7,6 +7,8 @@ dotenv.config(); // load in env
 client.commands = new discord.Collection(); // collection class extended from maps
 const commandFolders = fs.readdirSync('./commands');
 
+client.dispatcher = {};
+
 for (const folder of commandFolders) {
     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
     for (const file of commandFiles) {
@@ -25,12 +27,14 @@ client.on('message', (message) => {
     if (!message.content.startsWith(process.env.prefix) || message.author.bot) return;
 
     const args = message.content.slice(process.env.prefix.length).trim().split(/ +/);
-    const command = args.shift().toLowerCase();
+    const commandName = args.shift().toLowerCase();
 
-    if (!client.commands.has(command)) return;
+    if (!client.commands.has(commandName)) return;
+
+    const command = client.commands.get(commandName);
 
     try {
-        client.commands.get(command).execute(message, args);
+        command.execute(message, args);
     }
     catch (error) {
         console.error(error);
