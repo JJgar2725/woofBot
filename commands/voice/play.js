@@ -30,6 +30,7 @@ module.exports = {
                 .setTimestamp();
 
                 message.channel.send(songEmbed);
+                console.log(`Now Streaming: ${firstVideo.title}`);
             });
         }
         else {
