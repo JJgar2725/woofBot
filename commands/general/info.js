@@ -1,5 +1,6 @@
 module.exports = {
   name: "info",
+  aliases: ["profile"],
   description: "Sends a message with the info of a given user.",
   async execute(message, args, discord) {
     const user = message.author;
@@ -14,7 +15,11 @@ module.exports = {
       .addFields(
         { name: "Username", value: `${user.username}`, inline: true },
         { name: "User ID", value: `${user.id}`, inline: true },
-        { name: "Nickname", value: `${guildMember.nickname}`, inline: true },
+        {
+          name: "Nickname",
+          value: `${guildMember.nickname || user.username}`,
+          inline: true,
+        },
         { name: "Date Joined", value: `${user.createdAt}` },
         { name: "Mention With", value: `${user.tag}` }
       )

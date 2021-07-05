@@ -1,5 +1,6 @@
 module.exports = {
   name: "invite",
+  aliases: ["inv"],
   description: "Sends an invite for the bot.",
   execute(message) {
     const link =

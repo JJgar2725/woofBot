@@ -1,5 +1,7 @@
 module.exports = {
   name: "purge",
+  usage: "<number>",
+  args: true,
   description: "Deletes amount of messages passed in in args.",
   execute(message, args) {
     const msgsDeleted = parseInt(args[0]) + 1;
